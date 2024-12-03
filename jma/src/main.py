@@ -1,26 +1,14 @@
 import flet as ft
+import requests
+import json
 
+# 気象庁APIのエンドポイントURL
+AREA_URL = "http://www.jma.go.jp/bosai/common/const/area.json"
+FORECAST_URL_TEMPLATE = "https://www.jma.go.jp/bosai/forecast/data/forecast/{}.json"
 
 def main(page: ft.Page):
-    counter = ft.Text("0", size=50, data=0)
-
-    def increment_click(e):
-        counter.data += 1
-        counter.value = str(counter.data)
-        counter.update()
-
-    page.floating_action_button = ft.FloatingActionButton(
-        icon=ft.Icons.ADD, on_click=increment_click
-    )
-    page.add(
-        ft.SafeArea(
-            ft.Container(
-                counter,
-                alignment=ft.alignment.center,
-            ),
-            expand=True,
-        )
-    )
+    page.spacing = 0
+    page.padding = 0
 
 
 ft.app(main)
